@@ -6,7 +6,7 @@ export class SwapUsageMomiton {
   public static setup(scope: cdk.Construct, cacheClusterId: string) {
 
     return new cloudwatch.Alarm(scope, 'alarm-elastc-cache-' + cacheClusterId + '-SwapUsage', {
-      alarmName: 'elasticCache-swapUsage-alarm[' + cacheClusterId + ']',
+      alarmName: 'ElasticCacheSwapUsageAlarm[' + cacheClusterId + ']',
       metric: new cloudwatch.Metric({
         namespace: 'AWS/ElastiCache',
         metricName: 'SwapUsage',

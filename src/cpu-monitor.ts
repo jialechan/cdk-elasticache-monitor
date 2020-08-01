@@ -15,7 +15,7 @@ export class CpuMonitor {
     }
 
     return new cloudwatch.Alarm(scope, 'alarm-elastc-cache-' + cacheClusterId + '-' + metricName, {
-      alarmName: 'elasticCache-CPU-load-alarm[' + cacheClusterId + ']',
+      alarmName: 'ElasticCacheCPULoadAlarm[' + cacheClusterId + ']',
       metric: new cloudwatch.Metric({
         namespace: 'AWS/ElastiCache',
         metricName,
