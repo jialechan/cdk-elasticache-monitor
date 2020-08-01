@@ -12,10 +12,10 @@ Name|Description
 
 Name|Description
 ----|-----------
-[ISetUpWithEmailProps](#cdk-elasticache-monitor-isetupwithemailprops)|Elasticache auto monitor set up with email props.
-[ISetUpWithLambdaProps](#cdk-elasticache-monitor-isetupwithlambdaprops)|Elasticache auto monitor set up with topic props.
-[ISetUpWithSlackProps](#cdk-elasticache-monitor-isetupwithslackprops)|Elasticache auto monitor set up with Slack props.
-[ISetUpWithSmsProps](#cdk-elasticache-monitor-isetupwithsmsprops)|Elasticache auto monitor set up with sms props.
+[ISetUpWithEmailProps](#cdk-elasticache-monitor-isetupwithemailprops)|*No description*
+[ISetUpWithLambdaProps](#cdk-elasticache-monitor-isetupwithlambdaprops)|Elasticache auto monitor set up with labmda props.
+[ISetUpWithSlackProps](#cdk-elasticache-monitor-isetupwithslackprops)|*No description*
+[ISetUpWithSmsProps](#cdk-elasticache-monitor-isetupwithsmsprops)|*No description*
 
 
 
@@ -27,7 +27,7 @@ You will get the following monitoring:
   1. Cpu Monitor: Should be less than 90%. (See below reference)
   2. SwapUsage Monitor: Should be less than 50M.
   3. Evictions Monitor: Should not have evictions value.
-  4. CurrConnections Monitor: According to your business needs, default every 1 vcup is equal to 50 connections.
+  4. CurrConnections Monitor: According to your business needs, default every 1 vcup is equal to 200 connections.
   5. FreeableMemory Monitor: Not less than 10%
 
 Reference: https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheMetrics.WhichShouldIMonitor.html
@@ -66,17 +66,16 @@ static setUpWithEmail(scope: Construct, cacheClusterId: string, props: ISetUpWit
 
 
 
-#### *static* setUpWithLambda(scope, cacheClusterId, fn, props?)🔹 <a id="cdk-elasticache-monitor-elasticacheautomonitor-setupwithlambda"></a>
+#### *static* setUpWithLambda(scope, cacheClusterId, props)🔹 <a id="cdk-elasticache-monitor-elasticacheautomonitor-setupwithlambda"></a>
 
 
 
 ```ts
-static setUpWithLambda(scope: Construct, cacheClusterId: string, fn: Function, props?: ISetUpWithLambdaProps): void
+static setUpWithLambda(scope: Construct, cacheClusterId: string, props: ISetUpWithLambdaProps): void
 ```
 
 * **scope** (<code>[Construct](#aws-cdk-core-construct)</code>)  *No description*
 * **cacheClusterId** (<code>string</code>)  *No description*
-* **fn** (<code>[Function](#aws-cdk-aws-lambda-function)</code>)  *No description*
 * **props** (<code>[ISetUpWithLambdaProps](#cdk-elasticache-monitor-isetupwithlambdaprops)</code>)  *No description*
 
 
@@ -128,6 +127,7 @@ Name | Type | Description
 **memory**🔹 | <code>number</code> | <span></span>
 **name**🔹 | <code>string</code> | <span></span>
 **vcupCount**🔹 | <code>number</code> | <span></span>
+*static* **DEFAULT**🔹 | <code>[NodeType](#cdk-elasticache-monitor-nodetype)</code> | <span></span>
 *static* **M4_10XLARGE**🔹 | <code>[NodeType](#cdk-elasticache-monitor-nodetype)</code> | <span></span>
 *static* **M4_2XLARGE**🔹 | <code>[NodeType](#cdk-elasticache-monitor-nodetype)</code> | <span></span>
 *static* **M4_4XLARGE**🔹 | <code>[NodeType](#cdk-elasticache-monitor-nodetype)</code> | <span></span>
@@ -163,9 +163,7 @@ Name | Type | Description
 ## interface ISetUpWithEmailProps 🔹 <a id="cdk-elasticache-monitor-isetupwithemailprops"></a>
 
 
-Elasticache auto monitor set up with email props.
 
-Note that email subscriptions require confirmation by visiting the link sent to the email address.
 
 ### Properties
 
@@ -182,13 +180,14 @@ Name | Type | Description
 ## interface ISetUpWithLambdaProps 🔹 <a id="cdk-elasticache-monitor-isetupwithlambdaprops"></a>
 
 
-Elasticache auto monitor set up with topic props.
+Elasticache auto monitor set up with labmda props.
 
 ### Properties
 
 
 Name | Type | Description 
 -----|------|-------------
+**lambda**🔹 | <code>[Function](#aws-cdk-aws-lambda-function)</code> | <span></span>
 **currConnectionsPeriod**?🔹 | <code>[Duration](#aws-cdk-core-duration)</code> | The period over which the specified statistic is applied.<br/>__*Default*__: Duration.minutes(1)
 **currConnectionsThreshold**?🔹 | <code>number</code> | CurrConnections threshold.<br/>__*Default*__: 100
 **nodeType**?🔹 | <code>[NodeType](#cdk-elasticache-monitor-nodetype)</code> | Default elasticache node type.<br/>__*Default*__: NodeType.M5_LARGE
@@ -198,7 +197,7 @@ Name | Type | Description
 ## interface ISetUpWithSlackProps 🔹 <a id="cdk-elasticache-monitor-isetupwithslackprops"></a>
 
 
-Elasticache auto monitor set up with Slack props.
+
 
 ### Properties
 
@@ -218,7 +217,7 @@ Name | Type | Description
 ## interface ISetUpWithSmsProps 🔹 <a id="cdk-elasticache-monitor-isetupwithsmsprops"></a>
 
 
-Elasticache auto monitor set up with sms props.
+
 
 ### Properties
 
