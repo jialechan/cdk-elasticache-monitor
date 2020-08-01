@@ -94,7 +94,8 @@ test('sent with lambda', () => {
     code: lambda.Code.fromInline('exports.handler = function(event, ctx, cb) { return cb(null, "hi"); }'),
   });
 
-  ElasticacheAutoMonitor.setUpWithLambda(stack, 'my-elasticache-id', fn, {
+  ElasticacheAutoMonitor.setUpWithLambda(stack, 'my-elasticache-id', {
+    lambda: fn,
     nodeType: NodeType.R4_16XLARGE,
   });
 

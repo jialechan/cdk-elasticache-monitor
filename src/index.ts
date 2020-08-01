@@ -39,14 +39,12 @@ interface ISetUpProps {
 }
 
 /**
- * Elasticache auto monitor set up with topic props.
+ * Elasticache auto monitor set up with labmda props.
  */
 export interface ISetUpWithLambdaProps extends ISetUpProps {
+  readonly lambda: lambda.Function,
 }
 
-/**
- * Elasticache auto monitor set up with Slack props.
- */
 export interface ISetUpWithSlackProps extends ISetUpProps {
 
   /**
@@ -77,10 +75,6 @@ export interface ISetUpWithSlackProps extends ISetUpProps {
   readonly iconEmoji?: string;
 }
 
-/**
- * Elasticache auto monitor set up with email props.
- * Note that email subscriptions require confirmation by visiting the link sent to the email address.
- */
 export interface ISetUpWithEmailProps extends ISetUpProps {
   /**
    * Mailing list to be sent.
@@ -89,9 +83,6 @@ export interface ISetUpWithEmailProps extends ISetUpProps {
   readonly emails: string[];
 }
 
-/**
- * Elasticache auto monitor set up with sms props.
- */
 export interface ISetUpWithSmsProps extends ISetUpProps {
   /**
    * Include country code and phone number, for example: +15551231234
@@ -112,9 +103,9 @@ export interface ISetUpWithSmsProps extends ISetUpProps {
  */
 export class ElasticacheAutoMonitor extends cdk.Construct {
 
-  public static setUpWithLambda(scope: cdk.Construct, cacheClusterId: string, fn: lambda.Function, props?: ISetUpWithLambdaProps) {
+  public static setUpWithLambda(scope: cdk.Construct, cacheClusterId: string, props: ISetUpWithLambdaProps) {
     const topic = new sns.Topic(scope, 'alarm-' + cacheClusterId + '-lambda');
-    topic.addSubscription(new sns_sub.LambdaSubscription(fn));
+    topic.addSubscription(new sns_sub.LambdaSubscription(props.lambda));
     ElasticacheAutoMonitor.setup(scope, cacheClusterId, topic, props);
   }
 
