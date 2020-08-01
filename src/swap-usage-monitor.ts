@@ -6,7 +6,7 @@ export class SwapUsageMomiton {
   public static setup(scope: cdk.Construct, cacheClusterId: string) {
 
     return new cloudwatch.Alarm(scope, 'alarm-elastc-cache-' + cacheClusterId + '-SwapUsage', {
-      alarmName: 'ElasticCacheSwapUsageAlarm[' + cacheClusterId + ']',
+      alarmName: `ElasticCacheSwapUsageAlarm[${cacheClusterId}]`,
       metric: new cloudwatch.Metric({
         namespace: 'AWS/ElastiCache',
         metricName: 'SwapUsage',
@@ -16,7 +16,7 @@ export class SwapUsageMomiton {
       threshold: 52430000,
       period: cdk.Duration.minutes(1),
       evaluationPeriods: 1,
-      alarmDescription: 'The maximum value of the swapUsage within one minute is higher than 50MB',
+      alarmDescription: 'The maximum value of the swapUsage within one minute is higher than 50MB.',
       comparisonOperator: cloudwatch.ComparisonOperator.GREATER_THAN_OR_EQUAL_TO_THRESHOLD,
       treatMissingData: cloudwatch.TreatMissingData.BREACHING,
     });

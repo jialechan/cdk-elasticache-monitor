@@ -13,7 +13,7 @@ test('NodeType.T2_SMALL should equals 50 connections because T2_SMALL has 1 vcup
 
   expect(stack).toHaveResource('AWS::CloudWatch::Alarm', {
     MetricName: 'CurrConnections',
-    Threshold: 50,
+    Threshold: 200,
   });
 });
 
@@ -27,7 +27,7 @@ test('NodeType.T2_MEDIUM should equals 100 connections because T2_MEDIUM has 2 c
 
   expect(stack).toHaveResource('AWS::CloudWatch::Alarm', {
     MetricName: 'CurrConnections',
-    Threshold: 100,
+    Threshold: 400,
   });
 });
 
@@ -130,7 +130,7 @@ test('Default noteType', () => {
 
   expect(stack).toHaveResource('AWS::CloudWatch::Alarm', {
     MetricName: 'CurrConnections',
-    Threshold: 100,
+    Threshold: 400,
   });
 
   expect(stack).toHaveResource('AWS::CloudWatch::Alarm', {

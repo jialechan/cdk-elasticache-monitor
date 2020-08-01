@@ -9,7 +9,7 @@ export class FreeableMemoryMomiton {
     const threshold = Math.round(nodeType.memory * 0.1);
 
     return new cloudwatch.Alarm(scope, 'alarm-elastc-cache-' + cacheClusterId + '-FreeableMemory', {
-      alarmName: 'ElasticCacheFreeableMemoryAlarm[' + cacheClusterId + ']',
+      alarmName: `ElasticCacheFreeableMemoryAlarm[${cacheClusterId}]`,
       metric: new cloudwatch.Metric({
         namespace: 'AWS/ElastiCache',
         metricName: 'FreeableMemory',
@@ -19,7 +19,7 @@ export class FreeableMemoryMomiton {
       threshold,
       period: cdk.Duration.minutes(1),
       evaluationPeriods: 1,
-      alarmDescription: 'The FreeableMemory value is less than ' + (threshold / (1024 * 1024 * 1024)).toFixed(2) + 'Gb in one minute',
+      alarmDescription: `The FreeableMemory value is less than ${(threshold / (1024 * 1024 * 1024)).toFixed(2)}Gb in one minute.`,
       comparisonOperator: cloudwatch.ComparisonOperator.LESS_THAN_THRESHOLD,
       treatMissingData: cloudwatch.TreatMissingData.BREACHING,
     });

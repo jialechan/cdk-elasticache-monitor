@@ -15,7 +15,7 @@ export class CpuMonitor {
     }
 
     return new cloudwatch.Alarm(scope, 'alarm-elastc-cache-' + cacheClusterId + '-' + metricName, {
-      alarmName: 'ElasticCacheCPULoadAlarm[' + cacheClusterId + ']',
+      alarmName: `ElasticCacheCPULoadAlarm[${cacheClusterId}]`,
       metric: new cloudwatch.Metric({
         namespace: 'AWS/ElastiCache',
         metricName,
@@ -25,7 +25,7 @@ export class CpuMonitor {
       threshold,
       period: cdk.Duration.minutes(1),
       evaluationPeriods: 1,
-      alarmDescription: 'The average CPU load(' + metricName + ') is greater than' + threshold + '%',
+      alarmDescription: `The average CPU load(${metricName}) is greater than ${threshold}%.`,
       comparisonOperator: cloudwatch.ComparisonOperator.GREATER_THAN_OR_EQUAL_TO_THRESHOLD,
       treatMissingData: cloudwatch.TreatMissingData.BREACHING,
     });

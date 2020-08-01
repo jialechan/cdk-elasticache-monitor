@@ -96,7 +96,7 @@ export interface ISetUpWithSmsProps extends ISetUpProps {
  *  1. Cpu Monitor: Should be less than 90%. (See below reference)
  *  2. SwapUsage Monitor: Should be less than 50M.
  *  3. Evictions Monitor: Should not have evictions value.
- *  4. CurrConnections Monitor: According to your business needs, default every 1 vcup is equal to 50 connections.
+ *  4. CurrConnections Monitor: According to your business needs, default every 1 vcup is equal to 200 connections.
  *  5. FreeableMemory Monitor: Not less than 10%
  * 
  * Reference: https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheMetrics.WhichShouldIMonitor.html
@@ -149,28 +149,22 @@ export class ElasticacheAutoMonitor extends cdk.Construct {
     ElasticacheAutoMonitor.setup(scope, cacheClusterId, topic, props);
   }
 
-  private static setup(scope: cdk.Construct, cacheClusterId: string, topic: sns.Topic, props?: ISetUpProps) {
+  private static setup(scope: cdk.Construct, cacheClusterId: string, topic: sns.Topic, props: ISetUpProps) {
 
-    let nodeType = NodeType.M5_LARGE;
-    if (props && props.nodeType) {
-      nodeType = props.nodeType
+    // bind default and props
+    const nodeType = props.nodeType || NodeType.DEFAULT;
+    const _props = {
+      nodeType,
+      currConnectionsPeriod: cdk.Duration.minutes(1),
+      currConnectionsThreshold: nodeType.vcupCount * 200,
+      ...props,
     }
 
-    let currConnectionsPeriod = cdk.Duration.minutes(1);
-    if (props && props.currConnectionsPeriod) {
-      currConnectionsPeriod = props.currConnectionsPeriod
-    }
-
-    let currConnectionsThreshold = nodeType.vcupCount * 50;
-    if (props && props.currConnectionsThreshold) {
-      currConnectionsThreshold = props.currConnectionsThreshold
-    }
-
-    CpuMonitor.setup(scope, cacheClusterId, nodeType).addAlarmAction(new actions.SnsAction(topic));
+    CpuMonitor.setup(scope, cacheClusterId, _props.nodeType).addAlarmAction(new actions.SnsAction(topic));
     SwapUsageMomiton.setup(scope, cacheClusterId).addAlarmAction(new actions.SnsAction(topic));
     EvictionsMomiton.setup(scope, cacheClusterId).addAlarmAction(new actions.SnsAction(topic));
-    CurrConnectionsMomiton.setup(scope, cacheClusterId, currConnectionsPeriod, currConnectionsThreshold).addAlarmAction(new actions.SnsAction(topic));
-    FreeableMemoryMomiton.setup(scope, cacheClusterId, nodeType).addAlarmAction(new actions.SnsAction(topic));
+    CurrConnectionsMomiton.setup(scope, cacheClusterId, _props.currConnectionsPeriod, _props.currConnectionsThreshold).addAlarmAction(new actions.SnsAction(topic));
+    FreeableMemoryMomiton.setup(scope, cacheClusterId, _props.nodeType).addAlarmAction(new actions.SnsAction(topic));
   }
 
 }
@@ -216,4 +210,6 @@ export class NodeType {
   public static readonly R5_4XLARGE = new NodeType('cache.r5.4xlarge', 16, 105.81 * 1024 * 1024 * 1024);
   public static readonly R5_12XLARGE = new NodeType('cache.r5.12xlarge', 48, 317.77 * 1024 * 1024 * 1024);
   public static readonly R5_24LARGE = new NodeType('cache.r5.12xlarge', 96, 635.61 * 1024 * 1024 * 1024);
+
+  public static readonly DEFAULT = NodeType.M5_LARGE;
 }

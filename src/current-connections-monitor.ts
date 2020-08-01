@@ -6,7 +6,7 @@ export class CurrConnectionsMomiton {
   public static setup(scope: cdk.Construct, cacheClusterId: string, period: cdk.Duration, threshold: number) {
 
     return new cloudwatch.Alarm(scope, 'alarm-elastc-cache-' + cacheClusterId + '-CurrConnections', {
-      alarmName: 'ElasticCacheCurrConnectionsAlarm[' + cacheClusterId + ']',
+      alarmName: `ElasticCacheCurrConnectionsAlarm[${cacheClusterId}]`,
       metric: new cloudwatch.Metric({
         namespace: 'AWS/ElastiCache',
         metricName: 'CurrConnections',
@@ -16,7 +16,7 @@ export class CurrConnectionsMomiton {
       threshold,
       period,
       evaluationPeriods: 1,
-      alarmDescription: 'The connection constant in ' + period.toMinutes() + ' minute(s) is greater than ' + threshold,
+      alarmDescription: `The connection constant in ${period.toMinutes()} minute(s) is greater than ${threshold}.`,
       comparisonOperator: cloudwatch.ComparisonOperator.GREATER_THAN_OR_EQUAL_TO_THRESHOLD,
       treatMissingData: cloudwatch.TreatMissingData.BREACHING,
     });

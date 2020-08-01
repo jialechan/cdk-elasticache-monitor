@@ -7,7 +7,7 @@ export class EvictionsMomiton {
   public static setup(scope: cdk.Construct, cacheClusterId: string) {
 
     return new cloudwatch.Alarm(scope, 'alarm-elastc-cache-' + cacheClusterId + '-Evictions', {
-      alarmName: 'ElasticCacheEvictionsAlarm[' + cacheClusterId + ']',
+      alarmName: `ElasticCacheEvictionsAlarm[${cacheClusterId}]`,
       metric: new cloudwatch.Metric({
         namespace: 'AWS/ElastiCache',
         metricName: 'Evictions',
