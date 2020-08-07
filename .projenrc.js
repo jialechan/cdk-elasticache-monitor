@@ -37,6 +37,10 @@ const project = new JsiiProject({
   python: {
     distName: 'cdk-elasticache-monitor',
     module: 'cdk-elasticache-monitor'
+  },
+  dotnet: {
+    dotNetNamespace: 'Jiale.CdkElasticacheMonoitor',
+    packageId: 'Jiale.CdkElasticacheMonoitor'
   }
 });
 

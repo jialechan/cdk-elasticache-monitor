@@ -8,7 +8,7 @@ You will get the following monitoring:
   * CurrConnections Monitor: According to your business needs, default every 1 vcup is equal to 200 connections.
   * FreeableMemory Monitor: Not less than 10%
 
-Reference: https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheMetrics.WhichShouldIMonitor.html
+Reference: [Here](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheMetrics.WhichShouldIMonitor.html)
 
 ## Usage
 ```typescript
