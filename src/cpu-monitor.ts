@@ -27,7 +27,7 @@ export class CpuMonitor {
       evaluationPeriods: 1,
       alarmDescription: `The average CPU load(${metricName}) is greater than ${threshold}%.`,
       comparisonOperator: cloudwatch.ComparisonOperator.GREATER_THAN_OR_EQUAL_TO_THRESHOLD,
-      treatMissingData: cloudwatch.TreatMissingData.BREACHING,
+      treatMissingData: cloudwatch.TreatMissingData.NOT_BREACHING,
     });
   }
 }

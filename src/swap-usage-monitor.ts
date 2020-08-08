@@ -18,7 +18,7 @@ export class SwapUsageMomiton {
       evaluationPeriods: 1,
       alarmDescription: 'The maximum value of the swapUsage within one minute is higher than 50MB.',
       comparisonOperator: cloudwatch.ComparisonOperator.GREATER_THAN_OR_EQUAL_TO_THRESHOLD,
-      treatMissingData: cloudwatch.TreatMissingData.BREACHING,
+      treatMissingData: cloudwatch.TreatMissingData.NOT_BREACHING,
     });
   }
 }

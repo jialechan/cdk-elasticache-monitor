@@ -19,7 +19,7 @@ export class EvictionsMomiton {
       evaluationPeriods: 1,
       alarmDescription: 'Data evicted within one minute(We recommend that you determine your own alarm threshold for this metric based on your application needs)',
       comparisonOperator: cloudwatch.ComparisonOperator.GREATER_THAN_OR_EQUAL_TO_THRESHOLD,
-      treatMissingData: cloudwatch.TreatMissingData.BREACHING,
+      treatMissingData: cloudwatch.TreatMissingData.NOT_BREACHING,
     });
   }
 }

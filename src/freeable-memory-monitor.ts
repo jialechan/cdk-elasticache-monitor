@@ -21,7 +21,7 @@ export class FreeableMemoryMomiton {
       evaluationPeriods: 1,
       alarmDescription: `The FreeableMemory value is less than ${(threshold / (1024 * 1024 * 1024)).toFixed(2)}Gb in one minute.`,
       comparisonOperator: cloudwatch.ComparisonOperator.LESS_THAN_THRESHOLD,
-      treatMissingData: cloudwatch.TreatMissingData.BREACHING,
+      treatMissingData: cloudwatch.TreatMissingData.NOT_BREACHING,
     });
   }
 }
