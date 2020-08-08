@@ -119,10 +119,6 @@
       "python": {
         "distName": "cdk-elasticache-monitor",
         "module": "cdk-elasticache-monitor"
-      },
-      "dotnet": {
-        "namespace": "Jiale.CdkElasticacheMonoitor",
-        "packageId": "Jiale.CdkElasticacheMonoitor"
       }
     },
     "tsc": {
