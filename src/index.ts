@@ -111,7 +111,7 @@ export class ElasticacheAutoMonitor extends cdk.Construct {
     const fn = new lambda.Function(scope, 'alarm-' + cacheClusterId + '-to-slack', {
       handler: 'index.handler',
       runtime: lambda.Runtime.PYTHON_3_8,
-      code: lambda.Code.fromAsset(path.join(__dirname, 'asset/lambda')),
+      code: lambda.Code.fromAsset(path.join(__dirname, '../asset/lambda')),
       environment: {
         SLACK_WEBHOOK_URL: props.webHookUrl,
         CHANNEL: channel,
