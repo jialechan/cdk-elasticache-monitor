@@ -6,8 +6,8 @@ import { ElasticacheAutoMonitor, NodeType } from '../src/index';
 test('NodeType.T2_SMALL should equals 50 connections because T2_SMALL has 1 vcup', () => {
   const stack = new cdk.Stack();
 
-  ElasticacheAutoMonitor.setUpWithEmail(stack, 'my-elasticache-id', {
-    emails: ['jiale.chan@gmail.com'],
+  ElasticacheAutoMonitor.setUpWithSms(stack, 'my-elasticache-id', {
+    phones: ['+123456789'],
     nodeType: NodeType.T2_SMALL,
   });
 
@@ -20,8 +20,8 @@ test('NodeType.T2_SMALL should equals 50 connections because T2_SMALL has 1 vcup
 test('NodeType.T2_MEDIUM should equals 100 connections because T2_MEDIUM has 2 cnup', () => {
   const stack = new cdk.Stack();
 
-  ElasticacheAutoMonitor.setUpWithEmail(stack, 'my-elasticache-id', {
-    emails: ['jiale.chan@gmail.com'],
+  ElasticacheAutoMonitor.setUpWithSms(stack, 'my-elasticache-id', {
+    phones: ['+123456789'],
     nodeType: NodeType.T2_MEDIUM,
   });
 
@@ -34,8 +34,8 @@ test('NodeType.T2_MEDIUM should equals 100 connections because T2_MEDIUM has 2 c
 test('CPU should be less than 45% when vcpu are less than or eq 2', () => {
   const stack = new cdk.Stack();
 
-  ElasticacheAutoMonitor.setUpWithEmail(stack, 'my-elasticache-id', {
-    emails: ['jiale.chan@gmail.com'],
+  ElasticacheAutoMonitor.setUpWithSms(stack, 'my-elasticache-id', {
+    phones: ['+123456789'],
     nodeType: NodeType.T2_MEDIUM,
   });
 
@@ -48,8 +48,8 @@ test('CPU should be less than 45% when vcpu are less than or eq 2', () => {
 test('CPU should be less than 90% when vcpu are great than 2', () => {
   const stack = new cdk.Stack();
 
-  ElasticacheAutoMonitor.setUpWithEmail(stack, 'my-elasticache-id', {
-    emails: ['jiale.chan@gmail.com'],
+  ElasticacheAutoMonitor.setUpWithSms(stack, 'my-elasticache-id', {
+    phones: ['+123456789'],
     nodeType: NodeType.R4_16XLARGE,
   });
 
@@ -107,8 +107,8 @@ test('sent with lambda', () => {
 test('Customize currConnections value', () => {
   const stack = new cdk.Stack();
 
-  ElasticacheAutoMonitor.setUpWithEmail(stack, 'my-elasticache-id', {
-    emails: ['jiale.chan@gmail.com'],
+  ElasticacheAutoMonitor.setUpWithSms(stack, 'my-elasticache-id', {
+    phones: ['+123456789'],
     nodeType: NodeType.T2_SMALL,
     currConnectionsPeriod: cdk.Duration.minutes(2),
     currConnectionsThreshold: 200,
@@ -124,8 +124,8 @@ test('Customize currConnections value', () => {
 test('Default noteType', () => {
   const stack = new cdk.Stack();
 
-  ElasticacheAutoMonitor.setUpWithEmail(stack, 'my-elasticache-id', {
-    emails: ['jiale.chan@gmail.com'],
+  ElasticacheAutoMonitor.setUpWithSms(stack, 'my-elasticache-id', {
+    phones: ['+123456789'],
   });
 
   expect(stack).toHaveResource('AWS::CloudWatch::Alarm', {

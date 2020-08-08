@@ -1,3 +1,4 @@
+import * as path from 'path';
 import * as cdk from '@aws-cdk/core';
 import * as lambda from '@aws-cdk/aws-lambda';
 import * as sns from '@aws-cdk/aws-sns';
@@ -75,14 +76,6 @@ export interface ISetUpWithSlackProps extends ISetUpProps {
   readonly iconEmoji?: string;
 }
 
-export interface ISetUpWithEmailProps extends ISetUpProps {
-  /**
-   * Mailing list to be sent.
-   * Note that email subscriptions require confirmation by visiting the link sent to the email address.
-   */
-  readonly emails: string[];
-}
-
 export interface ISetUpWithSmsProps extends ISetUpProps {
   /**
    * Include country code and phone number, for example: +15551231234
@@ -118,7 +111,7 @@ export class ElasticacheAutoMonitor extends cdk.Construct {
     const fn = new lambda.Function(scope, 'alarm-' + cacheClusterId + '-to-slack', {
       handler: 'index.handler',
       runtime: lambda.Runtime.PYTHON_3_8,
-      code: lambda.Code.fromAsset('./src/asset/lambda'),
+      code: lambda.Code.fromAsset(path.join(__dirname, 'asset/lambda')),
       environment: {
         SLACK_WEBHOOK_URL: props.webHookUrl,
         CHANNEL: channel,
@@ -130,14 +123,6 @@ export class ElasticacheAutoMonitor extends cdk.Construct {
     const topic = new sns.Topic(scope, 'alarm-' + cacheClusterId + '-slack');
     topic.addSubscription(new sns_sub.LambdaSubscription(fn));
 
-    ElasticacheAutoMonitor.setup(scope, cacheClusterId, topic, props);
-  }
-
-  public static setUpWithEmail(scope: cdk.Construct, cacheClusterId: string, props: ISetUpWithEmailProps) {
-    const topic = new sns.Topic(scope, 'alarm-' + cacheClusterId + '-with-email-topic');
-    for (let email in props.emails) {
-      topic.addSubscription(new sns_sub.EmailSubscription(email));
-    }
     ElasticacheAutoMonitor.setup(scope, cacheClusterId, topic, props);
   }
 

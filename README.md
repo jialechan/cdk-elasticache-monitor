@@ -15,12 +15,6 @@ Reference: [Here](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Ca
 
 const stack = new cdk.Stack();
 
-// sent with email
-ElasticacheAutoMonitor.setUpWithEmail(stack, 'my-elasticache-id', {
-  emails: ['jiale.chan@gmail.com'],
-  nodeTypeClass: NodeType.R4_16XLARGE,
-});
-
 // or sent with sms
 ElasticacheAutoMonitor.setUpWithSms(stack, 'my-elasticache-id', {
   phones: ['+15533728278'],

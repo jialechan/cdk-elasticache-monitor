@@ -12,7 +12,6 @@ Name|Description
 
 Name|Description
 ----|-----------
-[ISetUpWithEmailProps](#cdk-elasticache-monitor-isetupwithemailprops)|*No description*
 [ISetUpWithLambdaProps](#cdk-elasticache-monitor-isetupwithlambdaprops)|Elasticache auto monitor set up with labmda props.
 [ISetUpWithSlackProps](#cdk-elasticache-monitor-isetupwithslackprops)|*No description*
 [ISetUpWithSmsProps](#cdk-elasticache-monitor-isetupwithsmsprops)|*No description*
@@ -49,21 +48,6 @@ new ElasticacheAutoMonitor(scope: Construct, id: string)
 
 
 ### Methods
-
-
-#### *static* setUpWithEmail(scope, cacheClusterId, props)🔹 <a id="cdk-elasticache-monitor-elasticacheautomonitor-setupwithemail"></a>
-
-
-
-```ts
-static setUpWithEmail(scope: Construct, cacheClusterId: string, props: ISetUpWithEmailProps): void
-```
-
-* **scope** (<code>[Construct](#aws-cdk-core-construct)</code>)  *No description*
-* **cacheClusterId** (<code>string</code>)  *No description*
-* **props** (<code>[ISetUpWithEmailProps](#cdk-elasticache-monitor-isetupwithemailprops)</code>)  *No description*
-
-
 
 
 #### *static* setUpWithLambda(scope, cacheClusterId, props)🔹 <a id="cdk-elasticache-monitor-elasticacheautomonitor-setupwithlambda"></a>
@@ -157,23 +141,6 @@ Name | Type | Description
 *static* **T3_MEDIUM**🔹 | <code>[NodeType](#cdk-elasticache-monitor-nodetype)</code> | <span></span>
 *static* **T3_MICRO**🔹 | <code>[NodeType](#cdk-elasticache-monitor-nodetype)</code> | <span></span>
 *static* **T3_SMALL**🔹 | <code>[NodeType](#cdk-elasticache-monitor-nodetype)</code> | <span></span>
-
-
-
-## interface ISetUpWithEmailProps 🔹 <a id="cdk-elasticache-monitor-isetupwithemailprops"></a>
-
-
-
-
-### Properties
-
-
-Name | Type | Description 
------|------|-------------
-**emails**🔹 | <code>Array<string></code> | Mailing list to be sent.
-**currConnectionsPeriod**?🔹 | <code>[Duration](#aws-cdk-core-duration)</code> | The period over which the specified statistic is applied.<br/>__*Default*__: Duration.minutes(1)
-**currConnectionsThreshold**?🔹 | <code>number</code> | CurrConnections threshold.<br/>__*Default*__: 100
-**nodeType**?🔹 | <code>[NodeType](#cdk-elasticache-monitor-nodetype)</code> | Default elasticache node type.<br/>__*Default*__: NodeType.M5_LARGE
 
 
 
