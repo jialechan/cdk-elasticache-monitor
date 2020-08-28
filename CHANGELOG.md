@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.14](https://github.com/jialechan/cdk-elasticache-monitor/compare/v0.0.13...v0.0.14) (2020-08-28)
+
+
+### Features
+
+* **core:** ConstructLibraryAws API ([5320c36](https://github.com/jialechan/cdk-elasticache-monitor/commit/5320c366d3c62b61cca6a33bee8ce71c994ec2bc))
+
 ### 0.0.13 (2020-08-08)
 
 ### 0.0.12 (2020-08-08)
