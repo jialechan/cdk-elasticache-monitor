@@ -81,13 +81,22 @@
     "@aws-cdk/core" "1.61.0"
     constructs "^3.0.4"
 
-"@aws-cdk/aws-cloudwatch@1.61.0", "@aws-cdk/aws-cloudwatch@^1.61.0":
+"@aws-cdk/aws-cloudwatch@1.61.0":
   version "1.61.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/aws-cloudwatch/-/aws-cloudwatch-1.61.0.tgz#3c0171ca76d086da424c1b4148a53c4d68dd885a"
   integrity sha512-/Lp+8OU82m2+VX0GDeO8RIzyJDEvZQQaSQYflXRAFxFDrHiU6i4kXLbr1j4jebB9r+NSEAZ6XopBNg+JsAXGug==
   dependencies:
     "@aws-cdk/aws-iam" "1.61.0"
     "@aws-cdk/core" "1.61.0"
+    constructs "^3.0.4"
+
+"@aws-cdk/aws-cloudwatch@^1.61.0":
+  version "1.63.0"
+  resolved "https://registry.yarnpkg.com/@aws-cdk/aws-cloudwatch/-/aws-cloudwatch-1.63.0.tgz#9f2bc95689b56bca688c60775d3211556aaff95d"
+  integrity sha512-evM2B+Q7ou3SGQsf+yS/SyAm82EKhEndllxXQSFDBSnoNGzl+s8jzebIAXay/2o1+5kj4/sv8p6Itxg+XsZKYQ==
+  dependencies:
+    "@aws-cdk/aws-iam" "1.63.0"
+    "@aws-cdk/core" "1.63.0"
     constructs "^3.0.4"
 
 "@aws-cdk/aws-codeguruprofiler@1.61.0":
@@ -168,6 +177,15 @@
   dependencies:
     "@aws-cdk/core" "1.61.0"
     "@aws-cdk/region-info" "1.61.0"
+    constructs "^3.0.4"
+
+"@aws-cdk/aws-iam@1.63.0":
+  version "1.63.0"
+  resolved "https://registry.yarnpkg.com/@aws-cdk/aws-iam/-/aws-iam-1.63.0.tgz#5bea211498a81e2c7f19e7e7d335e663195af02d"
+  integrity sha512-d+kkz9I9v5an3RrsmOhXxyQLop/SB90YoDfmpd9JdKkDyMGSZN+e5IMvqye0iGC7rfA6tkVQb9tVEBdlXvZbZQ==
+  dependencies:
+    "@aws-cdk/core" "1.63.0"
+    "@aws-cdk/region-info" "1.63.0"
     constructs "^3.0.4"
 
 "@aws-cdk/aws-kms@1.61.0":
@@ -307,6 +325,14 @@
     jsonschema "^1.2.5"
     semver "^7.2.2"
 
+"@aws-cdk/cloud-assembly-schema@1.63.0":
+  version "1.63.0"
+  resolved "https://registry.yarnpkg.com/@aws-cdk/cloud-assembly-schema/-/cloud-assembly-schema-1.63.0.tgz#e9653a947b1288c568f5844ef3488fbc2608e79f"
+  integrity sha512-5Pf23ahuGRuRrQ2Q8NkPY3H1zVIIM8yGwFOx3J/VA+cQHMcOSLcVSQXCEJuhRQgXnxkw4NqIyadERCrs4Jgbhg==
+  dependencies:
+    jsonschema "^1.2.5"
+    semver "^7.2.2"
+
 "@aws-cdk/cloudformation-diff@1.61.0":
   version "1.61.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/cloudformation-diff/-/cloudformation-diff-1.61.0.tgz#8acb549fd1dd819aa61dfed47e011b44827045a8"
@@ -319,13 +345,24 @@
     string-width "^4.2.0"
     table "^5.4.6"
 
-"@aws-cdk/core@1.61.0", "@aws-cdk/core@^1.61.0":
+"@aws-cdk/core@1.61.0":
   version "1.61.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/core/-/core-1.61.0.tgz#817689a087cb97741fd5e4b407ee603610f30fb3"
   integrity sha512-g6vOR7zqWfbSzIM2kqUPH0Tdk4tOUFGX1TM5crty1ndkNja84PvAzEjQZr34U2aCGk+EI2pyB/4D7BLiAhAvKw==
   dependencies:
     "@aws-cdk/cloud-assembly-schema" "1.61.0"
     "@aws-cdk/cx-api" "1.61.0"
+    constructs "^3.0.4"
+    fs-extra "^9.0.1"
+    minimatch "^3.0.4"
+
+"@aws-cdk/core@1.63.0", "@aws-cdk/core@^1.61.0":
+  version "1.63.0"
+  resolved "https://registry.yarnpkg.com/@aws-cdk/core/-/core-1.63.0.tgz#b69371706f66a141ab1e524c6b288788f3c14f1f"
+  integrity sha512-ADTBFy4Jm5Fa9yExnGNrhwmmmQ94FfPTRKGVkBouJzUB8+Q6xXxMynumUfo4Vh4oAliUdRWCSeQ6U238xctRaw==
+  dependencies:
+    "@aws-cdk/cloud-assembly-schema" "1.63.0"
+    "@aws-cdk/cx-api" "1.63.0"
     constructs "^3.0.4"
     fs-extra "^9.0.1"
     minimatch "^3.0.4"
@@ -338,10 +375,23 @@
     "@aws-cdk/cloud-assembly-schema" "1.61.0"
     semver "^7.2.2"
 
+"@aws-cdk/cx-api@1.63.0":
+  version "1.63.0"
+  resolved "https://registry.yarnpkg.com/@aws-cdk/cx-api/-/cx-api-1.63.0.tgz#977b1854b9c3f57faf268a6dc21a721969a405fd"
+  integrity sha512-ZehT06ySkMIq1j9Wpnw1hiWqKc0T5uOZLBTwCljnUmc9cr5cZnHQvy1fv3K7lr3nI3xcSNp1I0pMBw7KQXzIdQ==
+  dependencies:
+    "@aws-cdk/cloud-assembly-schema" "1.63.0"
+    semver "^7.2.2"
+
 "@aws-cdk/region-info@1.61.0":
   version "1.61.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/region-info/-/region-info-1.61.0.tgz#663e44206a92da544183c3a405cd73490fdc3103"
   integrity sha512-/10gvecycNJhYM2LIkA0XaoWgUZQ6K5FIIRaf/o4PbgHyR8WTyEPO6lbT0GoKi69TvC+18xzJ4iZ1p3ZdRnUYw==
+
+"@aws-cdk/region-info@1.63.0":
+  version "1.63.0"
+  resolved "https://registry.yarnpkg.com/@aws-cdk/region-info/-/region-info-1.63.0.tgz#a404049a59c7fc64ef2d36a30f4ed28691dbb14e"
+  integrity sha512-knjcOJRferLpYOaTWgNaA087Ttt/yKt1n7Uw3JkeKVbcnwKSzfVh4bXSxTaBzpxBWY61vhGJ+LznTThPQuV13w==
 
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.10.4":
   version "7.10.4"
